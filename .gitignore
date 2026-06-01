@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+.streamlit/secrets.toml
+*.csv.bak
+ejemplo_cvrp.csv
+prueba_solution.png
