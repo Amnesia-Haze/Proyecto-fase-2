@@ -108,6 +108,58 @@ PARAMS_SPEC: dict[str, list[dict[str, Any]]] = {
 
 
 # ---------------------------------------------------------------------------
+# Descripciones pedagógicas por método (Markdown)
+# ---------------------------------------------------------------------------
+
+METHOD_DESCRIPTIONS: dict[str, str] = {
+    "Nearest Neighbor": """\
+**Vecino Más Cercano** — heurística constructiva greedy.
+
+Desde el depósito (o el primer cliente según la estrategia), elige siempre
+el cliente **no visitado más cercano** que quepa en la capacidad restante.
+Cuando no hay más candidatos, cierra la ruta y abre una nueva.
+
+| Propiedad | Valor |
+|-----------|-------|
+| Complejidad | O(n²) |
+| Calidad | Buena en instancias pequeñas; subóptima en grandes |
+| Reproducible | Sí, con semilla fija |
+| Parámetros clave | Estrategia de inicio, regla de desempate |
+""",
+    "Clarke & Wright Savings": """\
+**Clarke & Wright Savings** — heurística de fusión de rutas (1964).
+
+Parte de *n* rutas individuales (depósito → cliente → depósito) y las
+**fusiona en orden decreciente de ahorro**:
+
+> s(i, j) = d(0, i) + d(0, j) − d(i, j)
+
+Una fusión se acepta si la carga combinada no supera Q.
+
+| Propiedad | Valor |
+|-----------|-------|
+| Complejidad | O(n² log n) |
+| Calidad | Generalmente mejor que Nearest Neighbor |
+| Reproducible | Siempre (determinista) |
+| Parámetros clave | Ninguno configurable |
+""",
+    "Sweep Algorithm": """\
+**Sweep Algorithm** — heurística de barrido angular (Gillett & Miller, 1974).
+
+Ordena los clientes por **ángulo polar** respecto al depósito y los asigna
+secuencialmente a rutas, abriendo una nueva ruta al superar la capacidad Q.
+
+| Propiedad | Valor |
+|-----------|-------|
+| Complejidad | O(n log n) |
+| Calidad | Buena cuando la distribución geográfica es radial |
+| Reproducible | Siempre (determinista) |
+| Parámetros clave | Ninguno configurable |
+""",
+}
+
+
+# ---------------------------------------------------------------------------
 # Registro principal
 # ---------------------------------------------------------------------------
 

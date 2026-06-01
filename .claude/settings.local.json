@@ -3,7 +3,8 @@
     "allow": [
       "PowerShell(Get-ChildItem \"i:\\\\Mi unidad\\\\Magister\\\\Optimización y modelamiento\\\\Proyecto fase 2\" -Recurse | Select-Object FullName, LastWriteTime | Where-Object { $_.FullName -notmatch '__pycache__' })",
       "PowerShell(python -m pip install matplotlib --quiet)",
-      "PowerShell(python -c \"import matplotlib; print\\('matplotlib', matplotlib.__version__\\)\")"
+      "PowerShell(python -c \"import matplotlib; print\\('matplotlib', matplotlib.__version__\\)\")",
+      "PowerShell($st = \"C:\\\\Users\\\\phabl\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\Scripts\\\\streamlit.exe\"; Set-Location \"i:\\\\Mi unidad\\\\Magister\\\\Optimización y modelamiento\\\\Proyecto fase 2\"; $proc = Start-Process -FilePath $st -ArgumentList \"run app.py --server.port 8503 --server.headless true\" -PassThru -RedirectStandardError \"$env:TEMP\\\\st_err.txt\"; Start-Sleep -Seconds 8; try { $r = Invoke-WebRequest -Uri \"http://localhost:8503\" -TimeoutSec 6 -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\" } catch { Get-Content \"$env:TEMP\\\\st_err.txt\" -ErrorAction SilentlyContinue | Select-Object -Last 10 })"
     ]
   }
 }
